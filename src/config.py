@@ -14,6 +14,7 @@ logger = setup_logger(__name__)
 
 # Supported language codes and their display names
 LANGUAGE_NAMES = {
+    "fa": "Persian (فارسی)",  # <--- این خط را به ابتدای دیکشنری اضافه کنید
     "zh": "Chinese (中文)",
     "es": "Spanish (Español)",
     "fr": "French (Français)",
@@ -27,7 +28,6 @@ LANGUAGE_NAMES = {
     "it": "Italian (Italiano)",
     "nl": "Dutch (Nederlands)",
 }
-
 
 class Config:
     """Application configuration manager"""
