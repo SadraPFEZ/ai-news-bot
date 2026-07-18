@@ -47,6 +47,14 @@ class NewsFetcher:
             "Autonomous Vehicle News": "https://www.autonomousvehicleinternational.com/feed",
         }
 
+        # Persian configuration: Targeted to OpenMetadata (OMD) sources
+        self.persian_feeds = {
+            "OpenMetadata GitHub Releases": "https://github.com/open-metadata/OpenMetadata/releases.atom",
+            "OpenMetadata Helm Charts": "https://github.com/open-metadata/openmetadata-helm-charts/releases.atom",
+            "OpenMetadata Official Blog": "https://medium.com/feed/openmetadata",
+            "Google News (OpenMetadata)": "https://news.google.com/rss/search?q=OpenMetadata&hl=en-US&gl=US&ceid=US:en",
+        }
+
         # Chinese AI news sources (zh)
         self.chinese_feeds = {
             # Tech News Outlets
@@ -280,6 +288,7 @@ class NewsFetcher:
 
         # Fetch domestic news based on language
         language_feeds_map = {
+            "fa": self.persian_feeds,  # Added to fetch OpenMetadata feeds for Persian
             "zh": self.chinese_feeds,
             "ja": self.japanese_feeds,
             "fr": self.french_feeds,
