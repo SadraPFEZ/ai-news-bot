@@ -198,7 +198,22 @@ For each news item:
         methods_str = os.getenv("NOTIFICATION_METHODS", "")
         if not methods_str:
             return []
-        return [m.strip().lower() for m in methods_str.split(",")]
+        methods = [m.strip().lower() for m in methods_str.split(",") if m.strip()]
+
+        validated_methods = []
+        for method in methods:
+            if method == "telegram":
+                if os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"):
+                    validated_methods.append(method)
+                else:
+                    logger.warning(
+                        "Telegram method requested but TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID "
+                        "is missing. Skipping Telegram notifications."
+                    )
+            else:
+                validated_methods.append(method)
+
+        return validated_methods
 
     @property
     def ai_response_language(self) -> str:
